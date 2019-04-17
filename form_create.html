@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html ng-app="forms">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Form Oluşturma Sayfası</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+<!--     <link href="style.css" rel="stylesheet" />
+ -->    <script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+    <!-- By setting the version to snapshot (available for all modules), you can test with the latest master version -->
+    <!--<script src="https://code.angularjs.org/snapshot/angular.js"></script>-->
+    <script src="https://code.angularjs.org/1.6.9/angular-route.js"></script>
+    <script src="https://code.angularjs.org/1.6.9/angular-animate.js"></script>
+    <script src="https://code.angularjs.org/1.6.9/angular-sanitize.js"></script>
+    <script src="forms.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+  <body ng-controller="MainCtrl">
+    <div class="container" data-ng-controller="FieldController">
+      <header class="app-header">
+        <h1 class="app-title">{{ appTitle }}</h1>
+        <h1 class="app-headline">{{ appHeadline }}</h1>
+      </header>
+    
+      <section class="app-body">
+        
+        
+        <section>
+
+           
+
+
+          <div class="col-md-12">
+            
+                <label>From Adı:</label>  
+                <input type="text" class="form-control"
+                data-ng-model="formName" 
+                placeholder="Form Başlığını Giriniz"
+                  />
+          </div>
+        
+          <div class="col-md-12">
+                  <label>From Açıklaması:</label>  
+                  <textarea type="text" class="form-control"
+                  data-ng-model="formDescription" 
+                  placeholder="Form Başlığını Giriniz"
+                    >
+                  </textarea>
+            </div>
+        
+
+        
+      
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">#</th>
+                <th scope="col">Alan Adı</th>
+                <th scope="col">Alan Tipi</th>
+                <th scope="col">Zorunlu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ng-repeat="field in fields track by $index">
+                <th scope="row">1</th>
+                <td><input type="checkbox" data-ng-model="field.done"></td>
+                <td><span class="done-{{ field.done }}">{{ field.fieldName }}</span></td>
+                <td><span class="done-{{ field.done }}">{{ field.type }}</span></td>
+                <td><span class="done-{{ field.done }}">{{ (field.required)? 'Evet':'Hayır' }}</span></td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <p>[ <a href="" data-ng-click="archive()">İşaretlenenleri Sil</a> ]</p>
+
+    
+        <form data-ng-submit="addField()" class="field-form">
+
+            <div class="col-md-2">
+                <input type="submit" value="Alan Ekle" />
+
+            </div>
+            <div class="col-md-4">
+          <input type="text" class="form-control" data-ng-model="fieldText" placeholder="Form Başlığını Giriniz" />
+          </div>
+
+          <div class="col-md-4">
+          <input type="text" class="form-control" data-ng-model="type" placeholder="Değişken Tipini Giriniz" />
+        </div>
+        <label>Zorunlu Alan</label>
+          <input type="checkbox" data-ng-model="required" />
+           
+          
+        </form>
+        <br /> 
+
+        <button class="btn btn-primary btn-block btn-lg" ng-click="saveForm()">Formu Kaydet <i class="icon-plus"></i></button>
+        <button onclick="" type="button" 
+        class="btn btn-danger btn-block btn-lg">İptal</button>
+      </section>
+      </section>
+    </div>
+  
+  </body>
+
+</html>

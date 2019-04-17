@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="forms">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Formlar Sayfası</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+<!--     <link href="style.css" rel="stylesheet" />
+ -->    <script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+    <!-- By setting the version to snapshot (available for all modules), you can test with the latest master version -->
+    <!--<script src="https://code.angularjs.org/snapshot/angular.js"></script>-->
+    <script src="https://code.angularjs.org/1.6.9/angular-route.js"></script>
+    <script src="https://code.angularjs.org/1.6.9/angular-animate.js"></script>
+    <script src="https://code.angularjs.org/1.6.9/angular-sanitize.js"></script>
+    <script src="forms.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+  <body ng-controller="MainCtrl">
+    <div class="container" data-ng-controller="FieldController">
+      <header class="app-header">
+        <h1 class="app-title">Formlar Sayfası</h1>
+        
+       
+        <a class="pull-right" 
+        ng-href="http://localhost:8080/form_create">+ Form Oluştur</a>
+      
+      </header>
+    
+      <section class="app-body">
+       
+        
+        <section>
+
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">#</th>
+                <th scope="col">Form Adı</th>
+                <th scope="col">Form Açıklaması</th>
+                <th scope="col">İşlem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ng-repeat="form in forms track by $index">
+                  <td><input type="checkbox" data-ng-model="form.done"></td>
+
+                <td scope="row">{{$index + 1}}</td>
+                <td><span class="done-{{ field.done }}">{{ form.name }}</span></td>
+                <td><span class="done-{{ field.done }}">{{ form.description }}</span></td>
+                <td><button class="btn btn-primary" ng-click="openForm($index)">Formu Aç</button>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <p>[ <a href="" data-ng-click="removeForms()">İşaretlenenleri Sil</a> ]</p>
+      </section>
+      </section>
+    </div>
+  
+  </body>
+
+</html>
