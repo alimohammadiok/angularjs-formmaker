@@ -81,17 +81,21 @@
     
         <form data-ng-submit="addField()" class="field-form">
 
-            <div class="col-md-2">
-                <input type="submit" value="Alan Ekle" />
+            <div class="col-md-3">
+                <input type="submit" value="+ Alan Ekle" />
 
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
           <input type="text" class="form-control" data-ng-model="fieldText" placeholder="Form Başlığını Giriniz" />
           </div>
 
-          <div class="col-md-4">
-          <input type="text" class="form-control" data-ng-model="type" placeholder="Değişken Tipini Giriniz" />
-        </div>
+
+          
+          <div class="col-md-3">
+          
+          <select data-ng-model="type" class="form-control"  ng-options="type for type in types">
+            </select>
+          </div>  
         <label>Zorunlu Alan</label>
           <input type="checkbox" data-ng-model="required" />
            

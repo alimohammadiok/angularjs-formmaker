@@ -15,7 +15,9 @@ app.config(function($routeProvider) {
   });
 });
 
-
+/* app.controller('typeCtrl', function($scope) {
+	$scope.types = ["string", "number", "date", "datetime", "text"];
+}); */
 
 app.controller('MainCtrl', function($scope) {
   $scope.name = 'World';
@@ -32,12 +34,12 @@ app.controller('FieldController', function($scope){
      {fieldName: "Soyadı", done: false, type: "string", required: false} ];
 	localStorage.setItem('fields', JSON.stringify($scope.fields));
 
-
+	$scope.types = ["string", "number", "date", "datetime", "text"];
 	//bu form icin:
 	$scope.saved = localStorage.getItem('forms');
 	$scope.forms = (localStorage.getItem('forms')!==null) ? JSON.parse($scope.saved) : 
-	[ {name: "form1", done: false, description: "bu formdir", required: true},
-	{name: "form2", done: false, description: "bu formd2 dir", required: true} ];
+	[ {name: "form1", fields:$scope.fields, done: false, description: "bu formdir", required: true},
+	{name: "form2", fields:$scope.fields, done: false, description: "bu formd2 dir", required: true} ];
 localStorage.setItem('forms', JSON.stringify($scope.forms));
 
 	$scope.addField = function() {

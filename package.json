@@ -1,0 +1,19 @@
+{
+  "name": "angularjs-form",
+  "version": "1.0.0",
+  "description": "form creator",
+  "main": "forms.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alimohammadiok/angularjs-formmaker.git"
+  },
+  "author": "Ali Mohammadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alimohammadiok/angularjs-formmaker/issues"
+  },
+  "homepage": "https://github.com/alimohammadiok/angularjs-formmaker#readme"
+}
