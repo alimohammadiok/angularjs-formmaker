@@ -19,13 +19,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
   <body >
-    <div class="container" data-ng-controller="FieldController">
+    <div class="container" data-ng-controller="FormShowCtrl">
       <header class="app-header">
-        <h1 class="app-title">Formlar Sayfası</h1>
-        
+        <h1 class="app-title">Formlar Görüntüleme</h1>
+        {{form.name}}
        
-        <a class="pull-right" 
-        ng-href="http://localhost:8080/form_create">+ Form Oluştur</a>
+       
       
       </header>
     
@@ -35,33 +34,9 @@
         <section>
 
 
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">#</th>
-                <th scope="col">Form Adı</th>
-                <th scope="col">Form Açıklaması</th>
-                <th scope="col">İşlem</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-ng-repeat="form in forms track by $index">
-                  <td><input type="checkbox" data-ng-model="form.done"></td>
-
-                <td scope="row">{{$index + 1}}</td>
-                <td><span class="done-{{ field.done }}">{{ form.name }}</span></td>
-                <td><span class="done-{{ field.done }}">{{ form.description }}</span></td>
-                <td><a ng-href="http://localhost:8080/form"
-                  ng-model="form.name"  class="btn btn-primary">Formu Aç</a>
-                </td>
-              </tr>
-              
-            </tbody>
-          </table>
+        
 
           
-          <p>[ <a href="" data-ng-click="removeForms()">İşaretlenenleri Sil</a> ]</p>
       </section>
       </section>
 

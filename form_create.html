@@ -18,7 +18,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
-  <body ng-controller="MainCtrl">
+  <body >
     <div class="container" data-ng-controller="FieldController">
       <header class="app-header">
         <h1 class="app-title">{{ appTitle }}</h1>
@@ -58,7 +58,7 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
+                <th scope="col"></th>
                 <th scope="col">#</th>
                 <th scope="col">Alan Adı</th>
                 <th scope="col">Alan Tipi</th>
@@ -67,8 +67,9 @@
             </thead>
             <tbody>
               <tr data-ng-repeat="field in fields track by $index">
-                <th scope="row">1</th>
+                 
                 <td><input type="checkbox" data-ng-model="field.done"></td>
+                <td scope="row">{{$index + 1}}</td> 
                 <td><span class="done-{{ field.done }}">{{ field.fieldName }}</span></td>
                 <td><span class="done-{{ field.done }}">{{ field.type }}</span></td>
                 <td><span class="done-{{ field.done }}">{{ (field.required)? 'Evet':'Hayır' }}</span></td>
@@ -92,11 +93,13 @@
 
           
           <div class="col-md-3">
-          
-          <select data-ng-model="type" class="form-control"  ng-options="type for type in types">
+          <select data-ng-model="type" 
+          class="form-control"  
+          ng-options="type for type in types"
+          >
             </select>
           </div>  
-        <label>Zorunlu Alan</label>
+        <label>Zorunlu Alan</label> 
           <input type="checkbox" data-ng-model="required" />
            
           

@@ -1,29 +1,53 @@
 var app = angular.module('forms', ['ngRoute', 'ngAnimate', 'ngSanitize']);
 app.config(function($routeProvider) {
-  $routeProvider
+	$routeProvider
+	
+	.when("/form/:param1", {
+		templateUrl : "form.html",
+		controller : "FormShowCtrl"
+		
+	})
   .when("/form_create", {
     templateUrl : "form_create.html"
-  })
-  .when("/red", {
-    templateUrl : "red.htm"
-  })
-  .when("/green", {
-    templateUrl : "green.htm"
-  })
-  .when("/blue", {
-    templateUrl : "blue.htm"
   });
-});
-
-/* app.controller('typeCtrl', function($scope) {
-	$scope.types = ["string", "number", "date", "datetime", "text"];
-}); */
-
-app.controller('MainCtrl', function($scope) {
-  $scope.name = 'World';
   
-  $scope.someNumber = 12.5;
+	
 });
+
+app.controller("FormShowCtrl", function ($scope, $routeParams, $location) {
+	var url = $location.path().split('/');
+    $scope.firstParameter = url[1];
+		$scope.secondParameter = url[2];
+
+		$scope.param1 = $routeParams.param1;
+    $scope.param2 = $routeParams.param2;
+		console.log($routeParams.param1);
+		console.log($scope.secondParameter);
+		console.log(url );
+});
+
+
+
+app.controller('FormCtrl', function($scope){
+	$scope.showForm = function ($formName){
+		$name = $formName;
+		$forms = localStorage.getItem('forms');
+		$forms =JSON.parse($forms);
+		const result = $forms.filter(form => form.name == $formName)[0];
+
+		//$scope.name = result.name;
+  
+    //$scope.someNumber = 12.5;
+		console.log($name);
+
+		//$scope.name = result.name;
+  
+    //$scope.someNumber = 12.5;
+	}
+	
+})
+
+
 
 app.controller('FieldController', function($scope){
     $scope.appTitle = "Form Oluşturma Sayfası";
@@ -33,8 +57,10 @@ app.controller('FieldController', function($scope){
     [ {fieldName: "Adı", done: false, type: "string", required: true},
      {fieldName: "Soyadı", done: false, type: "string", required: false} ];
 	localStorage.setItem('fields', JSON.stringify($scope.fields));
-
+	
 	$scope.types = ["string", "number", "date", "datetime", "text"];
+	$scope.type = $scope.types[0];
+	console.log($scope.types);
 	//bu form icin:
 	$scope.saved = localStorage.getItem('forms');
 	$scope.forms = (localStorage.getItem('forms')!==null) ? JSON.parse($scope.saved) : 
